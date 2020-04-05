@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="canonical" href="https://html5-templates.com/" />
+	<title> Acyclic Sulfonylimine Reaction Mechanism </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="css/sticky-menu.css" rel="stylesheet">
+	<script src="JSmol.min.js"></script>
+	<script src="JSmol.GLmol.min.js"></script>
+
+	<script>
+		var use = "HTML5"
+		var s = document.location.search;
+
+		if (s.indexOf("USE=") >= 0)
+			use = s.split("USE=")[1].split("&")[0]
+		else if (s.indexOf("WEBGL") >= 0)
+			use = "WEBGL HTML5"
+
+		var Info = {
+			width: "100%",
+			height: "100%",
+			debug: false,
+			color: "0xFFFFFF",
+			addSelectionOptions: false,
+			use: use,
+			disableJ2SLoadMonitor: true,
+			disableInitialConsole: true,
+			allowJavaScript: false
+		}
+
+		var starting_imine = Object.assign({}, Info)
+		var benzoic_acid = Object.assign({}, Info)
+		var pinc = Object.assign({}, Info)
+
+		starting_imine.script = "load acyclic/acyclic_1.g16; frame 2;"
+		benzoic_acid.script = "load benzoic_acid.g16; frame 1;"
+		pinc.script = "load pinc.g16; frame 1;"
+
+		var intr_1_2 = Object.assign({}, Info)
+		var intr_2_3 = Object.assign({}, Info)
+
+		intr_1_2.script = "load acyclic/acyclic_1_intr_2.g16; frame 1;"
+		intr_2_3.script = "load acyclic/acyclic_2_intr_3.g16; frame 1;"
+
+		var c12 = Object.assign({}, Info)
+		var c23 = Object.assign({}, Info)
+		var c34 = Object.assign({}, Info)
+		var c56 = Object.assign({}, Info)
+
+		c12.script = "load acyclic/acyclic_1_to_2.g16; frame 2; vibration on; vibration scale 0.5;"
+		c23.script = "load acyclic/acyclic_2_to_3.g16; frame 2; vibration on; vibration scale 0.5;"
+		c34.script = "load acyclic/acyclic_3_to_4.g16; frame 2; vibration on; vibration scale 0.5;"
+		c56.script = "load acyclic/acyclic_5_to_6.g16; frame 2; vibration on; vibration scale 0.5;"
+
+		var im2 = Object.assign({}, Info)
+		var im3 = Object.assign({}, Info)
+		var im4 = Object.assign({}, Info)
+		var im5 = Object.assign({}, Info)
+
+		im2.script = "load acyclic/acyclic_2.g16; frame 2;"
+		im3.script = "load acyclic/acyclic_3.g16; frame 2;"
+		im4.script = "load acyclic/acyclic_4.g16; frame 2;"
+		im5.script = "load acyclic/acyclic_5.g16; frame 2;"
+
+		var prd = Object.assign({}, Info)
+		var ppo = Object.assign({}, Info)
+
+		prd.script = "load acyclic/acyclic_6.g16; frame 2;"
+		ppo.script = "load ph3po.g16; frame 2;"
+
+		var fin = Object.assign({}, Info)
+		fin.script = "load $c1ccccc1;"
+	</script>
+</head>
+
+<body>
+	<section id="welcome" class="welcome-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Reaction Mechanism between the acyclic Sulfonylimine, PINC, and Benzoic Acid</h1>
+					<p>This page makes use of JSmol to render molecules as an intractable object. This package has two
+						modes: HTML5, and WEBGL. The first is slower and produces a lower quality rendering, but
+						supports showing vibrations and is supported on more devices. Therefore, it has been chosen as
+						the default rendering mode. To reload the page with WEBGL, click <a
+							href="acyclic.html?USE=WEBGL">here</a>, but note that all animations will be disabled.</p>
+					<p>It may take a few minutes for all of the components to load, so be patient! Note that Chrome and
+						similar browsers will not respond until the page is fully loaded, so do not be alarmed if the
+						page does not respond Intermediately! You can tell the page has finished loaded when benzene is
+						displayed below:</p>
+					<div class="molecule-view" style="width: 100px; height: 100px;">
+						<script>Jmol.getApplet("finished", fin)</script>
+					</div>
+					<p>If Web-based applications are too slow, please download the Gaussian16 output files and formatted
+						checkpoint files, which are provided as links on this webpage and on the associated GitHub
+						profile.</p>
+					<h2>The Mechanism is divided into the following parts:</h2>
+					<p><a class="btn btn-primary page-scroll" href="#starting_material">Starting material</a> <a
+							class="btn btn-primary page-scroll" href="#interactions">Interactions</a> <a
+							class="btn btn-primary page-scroll" href="#transition_states">Transition States</a> <a
+							class="btn btn-primary page-scroll" href="#intermediates">Intermediates</a> <a
+							class="btn btn-primary page-scroll" href="#products">Products</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="starting_material" class="about-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Starting Material</h1>
+					<p>Below is the starting materials for the reaction. When summed together, the total &Delta;G is 0
+						as these reactants serve as the reference state for all other steps in the reaction.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<p>Starting Sulfonylimine (Gaussian <a href="acyclic/acyclic_1.g16">output</a> and <a
+							href="acyclic/acyclic_1.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_1.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_1.g16">WEBGL</a></p>
+				</div>
+				<div class="col-lg-4">
+					<p>Benzoic Acid (Gaussian <a href="benzoic_acid.g16">output</a> and <a
+							href="benzoic_acid.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=benzoic_acid.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=benzoic_acid.g16">WEBGL</a></p>
+
+				</div>
+				<div class="col-lg-4">
+					<p>PINC Reagent (Gaussian <a href="pinc.g16">output</a> and <a
+							href="pinc.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=pinc.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=pinc.g16">WEBGL</a></p>
+
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-lg-4 molecule-view">
+					<script>Jmol.getApplet("starting_imine", starting_imine)</script>
+				</div>
+				<div class="col-lg-4 molecule-view">
+					<script>Jmol.getApplet("benzoic_acid", benzoic_acid)</script>
+				</div>
+				<div class="col-lg-4 molecule-view">
+					<script>Jmol.getApplet("pinc", pinc)</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="interactions" class="about-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Interactions between reactants</h1>
+					<p>These are interaction structures formed between the reactants before a transition state can be
+						formed.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<p>Interaction between the starting material and PINC (Gaussian <a
+							href="acyclic/acyclic_1_intr_2.g16">output</a> and <a
+							href="acyclic/acyclic_1_intr_2.fchk.gz">checkpoint</a>) </p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_1_intr_2.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_1_intr_2.g16">WEBGL</a></p>
+				</div>
+				<div class="col-lg-6">
+					<p>Interaction between intermediate 1 and benzoic acid (Gaussian <a
+							href="acyclic/acyclic_2_intr_3.g16">output</a> and <a
+							href="acyclic/acyclic_2_intr_3.fchk.gz">checkpoint</a>) </p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_2_intr_3.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_2_intr_3.g16">WEBGL</a></p>
+
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-lg-6 molecule-view">
+					<script>Jmol.getApplet("acyclic_1_intr_2", intr_1_2)</script>
+				</div>
+				<div class="col-lg-6 molecule-view">
+					<script>Jmol.getApplet("acyclic_2_intr_3", intr_2_3)</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="transition_states" class="about-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Transition States</h1>
+					<p>Below are the four transition states for the reaction shown in an interactive JSmol applet. By
+						default, the sole negative frequency is shown, but this can be turned off using the toggle links
+						below the animation. Additional vibrations can be loaded by right clicking the application and
+						selecting a different model.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<p>Attack of PINC onto the Sulfonylimine </p>
+					<p>Vibration: <a href="javascript:Jmol.script(acyclic_1_to_2,'vibration on')">On</a> <a
+							href="javascript:Jmol.script(acyclic_1_to_2,'vibration off')">Off</a></p>
+					<p>Gaussian <a href="acyclic/acyclic_1_to_2.g16">output</a> and <a
+							href="acyclic/acyclic_1_to_2.fchk.gz">checkpoint</a></p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_1_to_2.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_1_to_2.g16">WEBGL</a></p>
+				</div>
+				<div class="col-lg-3">
+					<p>Attack of the Carboxylic acid onto Intermediate-1 </p>
+					<p>Vibration: <a href="javascript:Jmol.script(acyclic_2_to_3,'vibration on')">On</a> <a
+							href="javascript:Jmol.script(acyclic_2_to_3,'vibration off')">Off</a></p>
+					<p>Gaussian <a href="acyclic/acyclic_2_to_3.g16">output</a> and <a
+							href="acyclic/acyclic_2_to_3.fchk.gz">checkpoint</a></p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_2_to_3.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_2_to_3.g16">WEBGL</a></p>
+
+				</div>
+				<div class="col-lg-3">
+					<p>Ring closing step</p>
+					<p>Vibration: <a href="javascript:Jmol.script(acyclic_3_to_4,'vibration on')">On</a> <a
+							href="javascript:Jmol.script(acyclic_3_to_4,'vibration off')">Off</a></p>
+					<p>Gaussian <a href="acyclic/acyclic_3_to_4.g16">output</a> and <a
+							href="acyclic/acyclic_3_to_4.fchk.gz">checkpoint</a></p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_3_to_4.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_3_to_4.g16">WEBGL</a></p>
+
+				</div>
+				<div class="col-lg-3">
+					<p>Removal of Ph<sub>3</sub>P=0</p>
+					<p>Vibration: <a href="javascript:Jmol.script(acyclic_5_to_6,'vibration on')">On</a> <a
+							href="javascript:Jmol.script(acyclic_5_to_6,'vibration off')">Off</a></p>
+					<p>Gaussian <a href="acyclic/acyclic_5_to_6.g16">output</a> and <a
+							href="acyclic/acyclic_5_to_6.fchk.gz">checkpoint</a></p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_5_to_6.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_5_to_6.g16">WEBGL</a></p>
+
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_1_to_2", c12)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_2_to_3", c23)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_3_to_4", c34)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_5_to_6", c56)</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="intermediates" class="about-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Intermediate States</h1>
+					<p>
+						Below are the intermediates for the reaction.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<p>Intermediate 1 (Gaussian <a href="acyclic/acyclic_2.g16">output</a> and <a
+							href="acyclic/acyclic_2.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_2.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_2.g16">WEBGL</a></p>
+				</div>
+				<div class="col-lg-3">
+					<p>Intermediate 2 (Gaussian <a href="acyclic/acyclic_3.g16">output</a> and <a
+							href="acyclic/acyclic_3.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_3.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_3.g16">WEBGL</a></p>
+				</div>
+				<div class="col-lg-3">
+					<p>Intermediate 3 (Gaussian <a href="acyclic/acyclic_4.g16">output</a> and <a
+							href="acyclic/acyclic_4.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_4.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_4.g16">WEBGL</a></p>
+
+				</div>
+				<div class="col-lg-3">
+					<p>Oxazaphosphetidine Intermediate (Gaussian <a href="acyclic/acyclic_5.g16">output</a> and <a
+							href="acyclic/acyclic_5.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_5.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_5.g16">WEBGL</a></p>
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_2", im2)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_3", im3)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_4", im4)</script>
+				</div>
+				<div class="col-lg-3 molecule-view">
+					<script>Jmol.getApplet("acyclic_5", im5)</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="products" class="about-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Products</h1>
+					<p>The products of the reaction are an oxadiazole and Ph<sub>3</sub>P=O.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<p>The resulting oxadiazole (Gaussian <a href="acyclic/acyclic_6.g16">output</a> and <a
+							href="acyclic/acyclic_6.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=acyclic/acyclic_6.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=acyclic/acyclic_6.g16">WEBGL</a></p>	
+				</div>
+				<div class="col-lg-6">
+					<p>Ph<sub>3</sub>P=O (Gaussian <a href="ph3po.g16">output</a> and <a
+							href="ph3po.fchk.gz">checkpoint</a>)</p>
+					<p>Fullscreen <a href="single.html?USE=HTML5&FILE=ph3po.g16">HTML5</a> <a
+							href="single.html?USE=WEBGL&FILE=ph3po.g16">WEBGL</a></p>		
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-lg-6 molecule-view">
+					<script>Jmol.getApplet("product", prd)</script>
+				</div>
+				<div class="col-lg-6 molecule-view">
+					<script>Jmol.getApplet("ph3po", ppo)</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sulfonylinime Reactions</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the landing page for Sulfonylinime Reactions!</h1>
+    <p>There are two reaction mechanisms shown by this website, one for a <a href="cyclic.html">cyclic sulfonylimine</a>
+        and one for an <a href="acyclic.html">acyclic sulfonylimine</a>. Please click the respective links to view the
+        mechanisms.</p>
+    <h2>System Requirements</h2>
+    <p>The two pages mentioned above make use of the <a href="https://sourceforge.net/projects/jsmol/">JSmol Molecular
+            Viewer</a> to render each step of the mechanism. This viewer makes use of either HTML5 or WebGL to render
+        the molecules. Both technologies require the use of a relatively new web browser (Chromium or Firefox) to work
+        properly. Additionally, since each pages has a total of 12 molecules to render, the loading time of the webpages
+        is fairly long, and it may appear that the website is frozen. To show that it is not frozen, a sample rendering
+        of benzene is included and is loaded last. Once this molecule is rendered, the entire site is ready to be
+        viewed. Neither page has been tested on a mobile device and a desktop or laptop computer is recommended.</p>
+    <h2>Website features</h2>
+    <p>By default, all molecules are rendered with HTML5 as this is the only way the molecular vibrations can be shown
+        using JSmol. However, WebGL versions of the <a href="cyclic.html?USE=WEBGL">cyclic sulfonylimine reaction</a> 
+        and the <a href="acyclic.html?USE=WEBGL">acyclic sulfonylimine reaction</a> are available using the respective
+        hyperlinks. By default, vibrations are shown only for the negative frequency associated with each transition
+        state, but the frequencies for other steps can be activated by right-clicking the molecule, changing the model
+        to the desired vibration, and then turning vibrations on through the JSmol menu. Finally, fullscreen renderings
+        of each step are available and are linked on each webpage.</p>
+    <h2>Other ways to view the content</h2>
+    <p>Given the heavy resources needed by each page, you may wish to download the 3D coordinates, frequencies, and
+        Molecular orbitals yourself. To do so, links are provided to the <a href="http://gaussian.com">Gaussian16</a>
+        output log and checkpoint file for each step of the reaction. These files can also be obtained from the
+        <a href="http://github.com/chopralab/sulfonylimine_reactivity">repository.</a></p>
+</body>
+
+</html>

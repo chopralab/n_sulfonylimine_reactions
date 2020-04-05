@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> View a single compound </title>
+    <script src="JSmol.min.js"></script>
+    <script src="JSmol.GLmol.min.js"></script>
+
+    <script>
+        var use = "HTML5"
+        var file = "$c1ccccc1"
+        var s = document.location.search;
+
+        if (s.indexOf("FILE=") >= 0)
+            file = s.split("FILE=")[1].split("&")[0]
+
+        if (s.indexOf("USE=") >= 0)
+            use = s.split("USE=")[1].split("&")[0]
+        else if (s.indexOf("WEBGL") >= 0)
+            use = "WEBGL HTML5"
+
+        var Info = {
+            width: "100%",
+            height: "100%",
+            debug: false,
+            color: "0xFFFFFF",
+            addSelectionOptions: false,
+            use: use,
+            script: "load " + file,
+            disableJ2SLoadMonitor: true,
+            disableInitialConsole: true,
+            allowJavaScript: false
+        }
+    </script>
+</head>
+
+<body>
+
+    <div style="width: 640px;height: 480px;margin: auto;padding-top: 100px;">
+        <script>Jmol.getApplet('single_file', Info)</script>
+    </div>
+
+</body>
+
+</html>
